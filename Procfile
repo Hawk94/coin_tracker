@@ -1,1 +1,1 @@
-web: gunicorn finder_site.wsgi
+web: gunicorn backend.wsgi
