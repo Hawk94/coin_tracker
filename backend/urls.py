@@ -16,12 +16,12 @@ Including another URLconf
 from django.conf.urls import url, include
 from django.contrib import admin
 
-from main.snippets import urls as snippets_urls
+from main.coins import urls as coins_urls
 
 
 
 
 urlpatterns = [
-    url(r'^', include(snippets_urls)),
+    url(r'^', include(coins_urls)),
     url(r'^admin/', admin.site.urls),
 ]

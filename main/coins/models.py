@@ -1,17 +1,11 @@
 from django.db import models
-from ..exchanges.models import Exchange
+from datetime import timedelta
 
 
 class BaseCoin(models.Model):
     created = models.DateTimeField(auto_now_add=True)
-    owner = models.ForeignKey('auth.User', on_delete=models.CASCADE)
-    exchange = models.ForeignKey(Exchange, on_delete=models.CASCADE)
-    period = models.DurationField()
-    period_open = models.DecimalField(decimal_places=8)
-    period_close = models.DecimalField(decimal_places=8)
-    period_high = models.DecimalField(decimal_places=8)
-    period_low = models.DecimalField(decimal_places=8)
-    period_volume = models.DecimalField(decimal_places=8)
+    exchange = models.CharField(max_length=100, blank=True, default='')
+    price = models.DecimalField(max_digits=12, decimal_places=4, default=0)
 
     class Meta:
         abstract = True
@@ -19,6 +13,12 @@ class BaseCoin(models.Model):
 
 
 class BTC(BaseCoin):
+    market_cap = models.DecimalField(max_digits=18, decimal_places=8, default=0)
 
 
 class ETH(BaseCoin):
+    market_cap = models.DecimalField(max_digits=18, decimal_places=8, default=0)
+
+
+class LTC(BaseCoin):
+    market_cap = models.DecimalField(max_digits=18, decimal_places=8, default=0)

@@ -46,7 +46,7 @@ INSTALLED_APPS = [
     'django_extensions',
 
     # LOCAL APPS
-    'main.snippets',
+    'main.coins',
 ]
 
 REST_FRAMEWORK = {

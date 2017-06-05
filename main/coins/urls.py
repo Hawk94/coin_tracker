@@ -1,13 +1,16 @@
 from django.conf.urls import url, include
-from .views import UserViewSet, CoinViewSet
+from .views import BTCViewSet, ETHViewSet, LTCViewSet
 from rest_framework.routers import DefaultRouter
 from rest_framework_swagger.views import get_swagger_view
 
 
 # Create a router and register our viewsets with it.
 router = DefaultRouter()
-router.register(r'coins', CoinViewSet)
-router.register(r'users', UserViewSet)
+router.register(r'btc', BTCViewSet)
+router.register(r'eth', ETHViewSet)
+router.register(r'ltc', LTCViewSet)
+
+
 
 schema_view = get_swagger_view(title='Pastebin API')
 
