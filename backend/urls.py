@@ -19,8 +19,6 @@ from django.contrib import admin
 from main.coins import urls as coins_urls
 
 
-
-
 urlpatterns = [
     url(r'^', include(coins_urls)),
     url(r'^admin/', admin.site.urls),

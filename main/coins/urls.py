@@ -11,7 +11,6 @@ router.register(r'eth', ETHViewSet)
 router.register(r'ltc', LTCViewSet)
 
 
-
 schema_view = get_swagger_view(title='Pastebin API')
 
 # The API URLs are now determined automatically by the router.
