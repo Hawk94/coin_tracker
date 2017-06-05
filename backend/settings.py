@@ -89,12 +89,11 @@ WSGI_APPLICATION = 'backend.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/1.11/ref/settings/#databases
+DATABASE_ENV = values.Value(environ_prefix=None, environ_name='DATABASE_ENV', default='DATABASE_URL')
+DATABASE_URL = values.SecretValue(environ_prefix=None, environ_name=str(DATABASE_ENV))
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-    }
+    'default': dj_database_url.parse(str(DATABASE_URL)),
 }
 
 
