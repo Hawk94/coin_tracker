@@ -5,5 +5,7 @@ django-rest-swagger==2.1.2
 django-cors-headers==2.1.0
 django-extensions==1.7.9
 
+#Heroku
+dj-database-url==0.4.2
 gunicorn==19.7.1
-
+psycopg2==2.6.2
