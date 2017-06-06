@@ -21,7 +21,7 @@ def api_root(request, format=None):
         'btc': reverse('btc-list', request=request, format=format),
         'eth': reverse('eth-list', request=request, format=format),
         'ltc': reverse('ltc-list', request=request, format=format)
-        
+
     })
 
 

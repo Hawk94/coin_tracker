@@ -1,9 +1,9 @@
 from django.db import models
-from datetime import date
+from django.utils import timezone
 
 
 class BaseCoin(models.Model):
-    date = models.DateField(default=date.today())
+    date = models.DateField(default=timezone.now)
     exchange = models.CharField(max_length=100, blank=True, default='')
     price = models.DecimalField(max_digits=12, decimal_places=4, default=0)
 

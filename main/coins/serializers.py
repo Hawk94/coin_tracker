@@ -14,18 +14,18 @@ class BTCSerializer(serializers.HyperlinkedModelSerializer):
 
     class Meta:
         model = BTC
-        fields = ('created', 'price')
+        fields = ('date', 'price')
 
 
 class ETHSerializer(serializers.HyperlinkedModelSerializer):
 
     class Meta:
         model = ETH
-        fields = ('created', 'price')
+        fields = ('date', 'price')
 
 
 class LTCSerializer(serializers.HyperlinkedModelSerializer):
 
     class Meta:
         model = LTC
-        fields = ('created', 'price')
+        fields = ('date', 'price')
