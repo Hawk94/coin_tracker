@@ -11,7 +11,7 @@ router.register(r'eth', ETHViewSet)
 router.register(r'ltc', LTCViewSet)
 
 
-schema_view = get_swagger_view(title='Pastebin API')
+schema_view = get_swagger_view(title='Coin Saver: Tracker API')
 
 # The API URLs are now determined automatically by the router.
 # Additionally, we include the login URLs for the browsable API.
