@@ -9,11 +9,13 @@ class Command(BaseCommand):
     help = 'Gets todays BTC price and saves it to the database'
 
     def handle(self, *args, **options):
-        url = 'http://api.coindesk.com/v1/bpi/historical/close.json?for=yesterday'
+        url = 'https://min-api.cryptocompare.com/data/histoday?fsym=BTC&tsym=USD&limit=1&aggregate=1&e=CCCAGG'
         request_json = requests.get(url).json()
-        date, price = request_json['bpi']
+        data = request_json['Data'][-1]
+        price = data['close']
+        date = datetime.datetime.utcfromtimestamp(data['time'])
 
-        btc = BTC(date=datetime.datetime.strptime(date, '%Y-%m-%d').date(), price=price, exchange='coindesk')
+        btc = BTC(date=date.date(), price=price, exchange='cryptocompare')
         btc.save()
 
         self.stdout.write(self.style.SUCCESS('Successfully created btc price record "%s"' % btc))

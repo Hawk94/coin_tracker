@@ -18,4 +18,4 @@ class Command(BaseCommand):
         ltc = LTC(date=date.date(), price=price, exchange='cryptocompare')
         ltc.save()
 
-        self.stdout.write(self.style.SUCCESS('Successfully created btc price record "%s"' % ltc))
+        self.stdout.write(self.style.SUCCESS('Successfully created ltc price record "%s"' % ltc))

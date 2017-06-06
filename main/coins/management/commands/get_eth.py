@@ -15,7 +15,7 @@ class Command(BaseCommand):
         price = data['close']
         date = datetime.datetime.utcfromtimestamp(data['time'])
 
-        eth = ETH(date=date.date(), price=price, excahnge='cryptocompare')
+        eth = ETH(date=date.date(), price=price, exchange='cryptocompare')
         eth.save()
 
-        self.stdout.write(self.style.SUCCESS('Successfully created btc price record "%s"' % eth))
+        self.stdout.write(self.style.SUCCESS('Successfully created eth price record "%s"' % eth))
