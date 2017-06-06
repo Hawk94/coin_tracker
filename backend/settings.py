@@ -54,6 +54,9 @@ class BaseConfiguration(Configuration):
     ]
 
     REST_FRAMEWORK = {
+        'DEFAULT_PERMISSION_CLASSES': (
+            'rest_framework.permissions.IsAuthenticatedOrReadOnly',
+        )
     }
 
     CORS_ORIGIN_ALLOW_ALL = True
