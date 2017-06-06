@@ -6,6 +6,7 @@ django-cors-headers==2.1.0
 django-extensions==1.7.9
 
 #Heroku
+django-dotenv==1.4.1
 django-environ==0.4.3
 whitenoise==3.3.0
 django-configurations==2.0

@@ -14,133 +14,133 @@ import os
 import environ
 import dj_database_url
 
-from configurations import values
-
-# Build paths inside the project like this: os.path.join(BASE_DIR, ...)
-BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+from configurations import Configuration, values
 
 
-# Quick-start development settings - unsuitable for production
-# See https://docs.djangoproject.com/en/1.11/howto/deployment/checklist/
+class BaseConfiguration(Configuration):
+    # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
+    BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-# SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'mnj9$1z4d$yllwa^6(&*&@*_ksz&$!ya-7-!*-hu^419be=+&a'
+    # Quick-start development settings - unsuitable for production
+    # See https://docs.djangoproject.com/en/1.11/howto/deployment/checklist/
 
-# SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+    # SECURITY WARNING: keep the secret key used in production secret!
+    SECRET_KEY = 'mnj9$1z4d$yllwa^6(&*&@*_ksz&$!ya-7-!*-hu^419be=+&a'
 
-ALLOWED_HOSTS = ['*']
+    # SECURITY WARNING: don't run with debug turned on in production!
+    DEBUG = True
 
+    ALLOWED_HOSTS = ['*']
 
-# Application definition
+    # Application definition
 
-INSTALLED_APPS = [
-    'django.contrib.admin',
-    'django.contrib.auth',
-    'django.contrib.contenttypes',
-    'django.contrib.sessions',
-    'django.contrib.messages',
-    'django.contrib.staticfiles',
+    INSTALLED_APPS = [
+        'django.contrib.admin',
+        'django.contrib.auth',
+        'django.contrib.contenttypes',
+        'django.contrib.sessions',
+        'django.contrib.messages',
+        'django.contrib.staticfiles',
 
-    # THIRD PARTY APPS
-    'rest_framework',
-    'rest_framework_swagger',
-    'corsheaders',
+        # THIRD PARTY APPS
+        'rest_framework',
+        'rest_framework_swagger',
+        'corsheaders',
 
-    'django_extensions',
+        'django_extensions',
 
-    # LOCAL APPS
-    'main.coins',
-]
+        # LOCAL APPS
+        'main.coins',
+    ]
 
-REST_FRAMEWORK = {
-    'PAGE_SIZE': 10
-}
+    REST_FRAMEWORK = {
+        'PAGE_SIZE': 10
+    }
 
-CORS_ORIGIN_ALLOW_ALL = True
+    CORS_ORIGIN_ALLOW_ALL = True
 
-MIDDLEWARE = [
-    'whitenoise.middleware.WhiteNoiseMiddleware',
-    'django.middleware.security.SecurityMiddleware',
-    'django.contrib.sessions.middleware.SessionMiddleware',
-    'corsheaders.middleware.CorsMiddleware',
-    'django.middleware.common.CommonMiddleware',
-    'django.middleware.csrf.CsrfViewMiddleware',
-    'django.contrib.auth.middleware.AuthenticationMiddleware',
-    'django.contrib.messages.middleware.MessageMiddleware',
-    'django.middleware.clickjacking.XFrameOptionsMiddleware',
-]
+    MIDDLEWARE = [
+        'whitenoise.middleware.WhiteNoiseMiddleware',
+        'django.middleware.security.SecurityMiddleware',
+        'django.contrib.sessions.middleware.SessionMiddleware',
+        'corsheaders.middleware.CorsMiddleware',
+        'django.middleware.common.CommonMiddleware',
+        'django.middleware.csrf.CsrfViewMiddleware',
+        'django.contrib.auth.middleware.AuthenticationMiddleware',
+        'django.contrib.messages.middleware.MessageMiddleware',
+        'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    ]
 
-ROOT_URLCONF = 'backend.urls'
+    ROOT_URLCONF = 'backend.urls'
 
-TEMPLATES = [
-    {
-        'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
-        'APP_DIRS': True,
-        'OPTIONS': {
-            'context_processors': [
-                'django.template.context_processors.debug',
-                'django.template.context_processors.request',
-                'django.contrib.auth.context_processors.auth',
-                'django.contrib.messages.context_processors.messages',
-            ],
+    TEMPLATES = [
+        {
+            'BACKEND': 'django.template.backends.django.DjangoTemplates',
+            'DIRS': [],
+            'APP_DIRS': True,
+            'OPTIONS': {
+                'context_processors': [
+                    'django.template.context_processors.debug',
+                    'django.template.context_processors.request',
+                    'django.contrib.auth.context_processors.auth',
+                    'django.contrib.messages.context_processors.messages',
+                ],
+            },
         },
-    },
-]
+    ]
 
-WSGI_APPLICATION = 'backend.wsgi.application'
-
-
-# Database
-# https://docs.djangoproject.com/en/1.11/ref/settings/#databases
-DATABASE_ENV = values.Value(environ_prefix=None, environ_name='DATABASE_ENV', default='DATABASE_URL')
-DATABASE_URL = values.SecretValue(environ_prefix=None, environ_name=str(DATABASE_ENV))
-
-DATABASES = {
-    'default': dj_database_url.parse(str(DATABASE_URL)),
-}
+    WSGI_APPLICATION = 'backend.wsgi.application'
 
 
-# Password validation
-# https://docs.djangoproject.com/en/1.11/ref/settings/#auth-password-validators
+    # Database
+    # https://docs.djangoproject.com/en/1.11/ref/settings/#databases
+    DATABASE_ENV = values.Value(environ_prefix=None, environ_name='DATABASE_ENV', default='DATABASE_URL')
+    DATABASE_URL = values.SecretValue(environ_prefix=None, environ_name=str(DATABASE_ENV))
 
-AUTH_PASSWORD_VALIDATORS = [
-    {
-        'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
-    },
-    {
-        'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',
-    },
-    {
-        'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator',
-    },
-    {
-        'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
-    },
-]
+    DATABASES = {
+        'default': dj_database_url.parse(str(DATABASE_URL)),
+    }
 
 
-# Internationalization
-# https://docs.djangoproject.com/en/1.11/topics/i18n/
+    # Password validation
+    # https://docs.djangoproject.com/en/1.11/ref/settings/#auth-password-validators
 
-LANGUAGE_CODE = 'en-us'
+    AUTH_PASSWORD_VALIDATORS = [
+        {
+            'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
+        },
+        {
+            'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',
+        },
+        {
+            'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator',
+        },
+        {
+            'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
+        },
+    ]
 
-TIME_ZONE = 'UTC'
 
-USE_I18N = True
+    # Internationalization
+    # https://docs.djangoproject.com/en/1.11/topics/i18n/
 
-USE_L10N = True
+    LANGUAGE_CODE = 'en-us'
 
-USE_TZ = True
+    TIME_ZONE = 'UTC'
+
+    USE_I18N = True
+
+    USE_L10N = True
+
+    USE_TZ = True
 
 
-# Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/1.11/howto/static-files/
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
-STATIC_ROOT = os.path.join(BASE_DIR, 'static')
-STATIC_URL = '/static/'
+    # Static files (CSS, JavaScript, Images)
+    # https://docs.djangoproject.com/en/1.11/howto/static-files/
+    STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+    STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+    STATIC_URL = '/static/'
 
-# Extra places for collectstatic to find static files.
-STATICFILES_DIRS = [
-]
+    # Extra places for collectstatic to find static files.
+    STATICFILES_DIRS = [
+    ]
