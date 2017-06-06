@@ -13,7 +13,7 @@ class Command(BaseCommand):
         request_json = requests.get(url).json()
         date, price = request_json['bpi']
 
-        btc = BTC(date=datetime.datetime.strptime(date, '%Y-%m-%d').date(), price=price, excahnge='coindesk')
+        btc = BTC(date=datetime.datetime.strptime(date, '%Y-%m-%d').date(), price=price, exchange='coindesk')
         btc.save()
 
         self.stdout.write(self.style.SUCCESS('Successfully created btc price record "%s"' % btc))
