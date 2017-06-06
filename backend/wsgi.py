@@ -9,10 +9,9 @@ https://docs.djangoproject.com/en/1.11/howto/deployment/wsgi/
 
 import os
 
-from configurations.wsgi import get_wsgi_application  # NOQA
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'mysite.settings')
+os.environ.setdefault('DJANGO_CONFIGURATION', 'Dev')
 
-
-os.environ.setdefault("DJANGO_SETTINGS_MODULE", "backend.settings")
-os.environ.setdefault("DJANGO_CONFIGURATION", "BaseConfiguration")
+from configurations.wsgi import get_wsgi_application
 
 application = get_wsgi_application()
