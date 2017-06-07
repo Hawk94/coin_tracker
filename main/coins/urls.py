@@ -1,5 +1,6 @@
 from django.conf.urls import url, include
 from .views import BTCViewSet, ETHViewSet, LTCViewSet
+from main.stocks.views import AAPLViewSet, FBViewSet, GOOGViewSet, NFLXViewSet, FANGViewSet
 from rest_framework.routers import DefaultRouter
 from rest_framework_swagger.views import get_swagger_view
 
@@ -9,7 +10,11 @@ router = DefaultRouter()
 router.register(r'btc', BTCViewSet)
 router.register(r'eth', ETHViewSet)
 router.register(r'ltc', LTCViewSet)
-
+router.register(r'aapl', AAPLViewSet)
+router.register(r'fb', FBViewSet)
+router.register(r'goog', GOOGViewSet)
+router.register(r'nflx', NFLXViewSet)
+router.register(r'fang', FANGViewSet)
 
 schema_view = get_swagger_view(title='Coin Saver: Tracker API')
 

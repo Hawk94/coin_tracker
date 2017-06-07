@@ -1,17 +1,13 @@
-from rest_framework import permissions
 from rest_framework import viewsets
 
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from rest_framework.reverse import reverse
-from rest_framework.renderers import JSONRenderer
-from rest_framework.views import APIView
 
 from django.contrib.auth.models import User
 from .models import BTC, ETH, LTC
 
 from .serializers import BTCSerializer, ETHSerializer, LTCSerializer, UserSerializer
-from .permissions import IsOwnerOrReadOnly
 
 
 @api_view(['GET'])
@@ -20,7 +16,11 @@ def api_root(request, format=None):
         'users': reverse('user-list', request=request, format=format),
         'btc': reverse('btc-list', request=request, format=format),
         'eth': reverse('eth-list', request=request, format=format),
-        'ltc': reverse('ltc-list', request=request, format=format)
+        'ltc': reverse('ltc-list', request=request, format=format),
+        'aapl': reverse('aapl-list', request=request, format=format),
+        'fb': reverse('fb-list', request=request, format=format),
+        'goog': reverse('goog-list', request=request, format=format),
+        'fang': reverse('fang-list', request=request, format=format)
 
     })
 

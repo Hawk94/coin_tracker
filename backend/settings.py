@@ -51,6 +51,7 @@ class BaseConfiguration(Configuration):
 
         # LOCAL APPS
         'main.coins',
+        'main.stocks',
     ]
 
     REST_FRAMEWORK = {
