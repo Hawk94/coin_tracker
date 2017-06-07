@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import AAPL, FB, GOOG, NFLX, FANG
+from .models import AAPL, FB, GOOG, NFLX, MSFT, AMZN, FANG, FAMGA
 
 
 class AAPLSerializer(serializers.HyperlinkedModelSerializer):
@@ -30,8 +30,36 @@ class NFLXSerializer(serializers.HyperlinkedModelSerializer):
         fields = ('date', 'price')
 
 
+class AMZNSerializer(serializers.HyperlinkedModelSerializer):
+
+    class Meta:
+        model = AMZN
+        fields = ('date', 'price')
+
+
+class MSFTSerializer(serializers.HyperlinkedModelSerializer):
+
+    class Meta:
+        model = MSFT
+        fields = ('date', 'price')
+
+
 class FANGSerializer(serializers.HyperlinkedModelSerializer):
+    """
+    Facebook, Amazon, Netflix, Google.
+    """
 
     class Meta:
         model = FANG
         fields = ('date', 'price')
+
+
+class FAMGASerializer(serializers.HyperlinkedModelSerializer):
+    """
+    Facebook, Amazon, Microsoft, Google, Apple
+    """
+
+    class Meta:
+        model = FAMGA
+        fields = ('date', 'price')
+

@@ -1,8 +1,8 @@
 from rest_framework import viewsets
 
-from .models import AAPL, FB, GOOG, NFLX, FANG
+from .models import AAPL, FB, GOOG, NFLX, MSFT, AMZN, FANG, FAMGA
 
-from .serializers import AAPLSerializer, FBSerializer, GOOGSerializer, NFLXSerializer, FANGSerializer
+from .serializers import AAPLSerializer, FBSerializer, GOOGSerializer, NFLXSerializer, MSFTSerializer, AMZNSerializer, FANGSerializer, FAMGASerializer
 
 
 class AAPLViewSet(viewsets.ModelViewSet):
@@ -41,6 +41,24 @@ class NFLXViewSet(viewsets.ModelViewSet):
     serializer_class = NFLXSerializer
 
 
+class MSFTViewSet(viewsets.ModelViewSet):
+    """
+    This viewset automatically provides `list`, `create`, `retrieve`,
+    `update` and `destroy` actions.
+    """
+    queryset = MSFT.objects.all()
+    serializer_class = MSFTSerializer
+
+
+class AMZNViewSet(viewsets.ModelViewSet):
+    """
+    This viewset automatically provides `list`, `create`, `retrieve`,
+    `update` and `destroy` actions.
+    """
+    queryset = AMZN.objects.all()
+    serializer_class = AMZNSerializer
+
+
 class FANGViewSet(viewsets.ModelViewSet):
     """
     This viewset automatically provides `list`, `create`, `retrieve`,
@@ -48,3 +66,12 @@ class FANGViewSet(viewsets.ModelViewSet):
     """
     queryset = FANG.objects.all()
     serializer_class = FANGSerializer
+
+
+class FAMGAViewSet(viewsets.ModelViewSet):
+    """
+    This viewset automatically provides `list`, `create`, `retrieve`,
+    `update` and `destroy` actions.
+    """
+    queryset = FAMGA.objects.all()
+    serializer_class = FAMGASerializer

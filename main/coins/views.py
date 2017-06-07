@@ -20,7 +20,10 @@ def api_root(request, format=None):
         'aapl': reverse('aapl-list', request=request, format=format),
         'fb': reverse('fb-list', request=request, format=format),
         'goog': reverse('goog-list', request=request, format=format),
-        'fang': reverse('fang-list', request=request, format=format)
+        'msft': reverse('msft-list', request=request, format=format),
+        'amzn': reverse('amzn-list', request=request, format=format),
+        'fang': reverse('fang-list', request=request, format=format),
+        'famga': reverse('famga-list', request=request, format=format)
 
     })
 
