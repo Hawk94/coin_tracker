@@ -22,7 +22,7 @@ class Command(BaseCommand):
         for stock, symbol in self.STOCKS.items():
             request_json = requests.get(base_url.format(symbol, ALPHA_VANTAGE_API_KEY)).json()
             previous_close = request_json['Realtime Global Securities Quote']['07. Close (Previous Trading Day)']
-            date = datetime.date.today()
+            date = datetime.date.today() - datetime.timedelta(days=1)
             
             if stock != AMZN or stock != MSFT:
                 fang.append(decimal.Decimal(previous_close))
