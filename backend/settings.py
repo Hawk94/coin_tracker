@@ -46,12 +46,14 @@ class BaseConfiguration(Configuration):
         'rest_framework',
         'rest_framework_swagger',
         'corsheaders',
+        'storages',
 
         'django_extensions',
 
         # LOCAL APPS
         'main.coins',
         'main.stocks',
+        'core',
     ]
 
     REST_FRAMEWORK = {
@@ -122,6 +124,15 @@ class BaseConfiguration(Configuration):
             'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
         },
     ]
+
+    # Storages
+    
+    DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+    AWS_STORAGE_BUCKET_NAME = 'coinsaver'
+    
+    AWS_S3_REGION_NAME = 'eu-west-2'
+    AWS_S3_HOST = 's3.eu-west-2.amazonaws.com'
+    AWS_S3_SIGNATURE_VERSION = 's3v4'
 
 
     # Internationalization
