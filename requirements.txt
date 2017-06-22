@@ -1,10 +1,14 @@
 django==1.11.1
 
+#Django Extensions
 djangorestframework==3.6.3
 django-rest-swagger==2.1.2
 django-cors-headers==2.1.0
 django-extensions==1.7.9
 django-storages==1.5.2
+
+#Third-Party Libs
+websocket==0.2.1
 boto3==1.4.4
 
 #Heroku
