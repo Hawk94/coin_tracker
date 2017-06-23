@@ -1,8 +1,8 @@
 from rest_framework import viewsets
 
-from .models import AAPL, FB, GOOG, NFLX, MSFT, AMZN, FANG, FAMGA
+from .models import AAPL, FB, GOOG, NFLX, MSFT, AMZN, SPX, FANG, FAMGA
 
-from .serializers import AAPLSerializer, FBSerializer, GOOGSerializer, NFLXSerializer, MSFTSerializer, AMZNSerializer, SandPSerializer, FANGSerializer, FAMGASerializer
+from .serializers import AAPLSerializer, FBSerializer, GOOGSerializer, NFLXSerializer, MSFTSerializer, AMZNSerializer, SPXSerializer, FANGSerializer, FAMGASerializer
 
 
 class AAPLViewSet(viewsets.ModelViewSet):
@@ -59,13 +59,13 @@ class AMZNViewSet(viewsets.ModelViewSet):
     serializer_class = AMZNSerializer
 
 
-class SandPViewSet(viewsets.ModelViewSet):
+class SPXViewSet(viewsets.ModelViewSet):
     """
     This viewset automatically provides `list`, `create`, `retrieve`,
     `update` and `destroy` actions.
     """
-    queryset = SandP.objects.all()
-    serializer_class = SandPSerializer
+    queryset = SPX.objects.all()
+    serializer_class = SPXSerializer
 
 
 class FANGViewSet(viewsets.ModelViewSet):

@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import AAPL, FB, GOOG, NFLX, MSFT, AMZN, SandP, FANG, FAMGA
+from .models import AAPL, FB, GOOG, NFLX, MSFT, AMZN, SPX, FANG, FAMGA
 
 
 class AAPLSerializer(serializers.HyperlinkedModelSerializer):
@@ -44,13 +44,13 @@ class MSFTSerializer(serializers.HyperlinkedModelSerializer):
         fields = ('date', 'price')
 
 
-class SandPSerializer(serializers.HyperlinkedModelSerializer):
+class SPXSerializer(serializers.HyperlinkedModelSerializer):
     """
     S&P 500
     """
 
     class Meta:
-        model = SandP
+        model = SPX
         fields = ('date', 'price')
 
 

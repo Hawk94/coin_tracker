@@ -1,6 +1,6 @@
 from django.conf.urls import url, include
 from .views import BTCViewSet, ETHViewSet, LTCViewSet
-from main.stocks.views import AAPLViewSet, FBViewSet, GOOGViewSet, NFLXViewSet, MSFTViewSet, AMZNViewSet, FANGViewSet, FAMGAViewSet
+from main.stocks.views import AAPLViewSet, FBViewSet, GOOGViewSet, NFLXViewSet, MSFTViewSet, AMZNViewSet, SPXViewSet, FANGViewSet, FAMGAViewSet
 from rest_framework.routers import DefaultRouter
 from rest_framework_swagger.views import get_swagger_view
 
@@ -16,6 +16,7 @@ router.register(r'goog', GOOGViewSet)
 router.register(r'nflx', NFLXViewSet)
 router.register(r'msft', MSFTViewSet)
 router.register(r'amzn', AMZNViewSet)
+router.register(r'spx', SPXViewSet)
 router.register(r'fang', FANGViewSet)
 router.register(r'famga', FAMGAViewSet)
 

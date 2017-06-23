@@ -1,5 +1,5 @@
 from django.core.management.base import BaseCommand, CommandError
-from main.stocks.models import AAPL, AMZN, FB, GOOG, NFLX, MSFT, FANG, FAMGA
+from main.stocks.models import AAPL, AMZN, FB, GOOG, NFLX, MSFT, SPX, FANG, FAMGA
 import requests
 import datetime
 import decimal
@@ -13,7 +13,8 @@ class Command(BaseCommand):
               FB: 'FB',
               GOOG: 'GOOG',
               NFLX: 'NFLX',
-              MSFT: 'MSFT'}
+              MSFT: 'MSFT',
+              SPX: 'SPX'}
 
     def handle(self, *args, **options):
         base_url = 'http://www.alphavantage.co/query?function=GLOBAL_QUOTE&symbol={}&apikey={}'

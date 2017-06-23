@@ -35,7 +35,7 @@ class MSFT(BaseStock):
     market_cap = models.DecimalField(max_digits=18, decimal_places=8, default=0)
 
 
-class SandP(BaseStock):
+class SPX(BaseStock):
     market_cap = models.DecimalField(max_digits=18, decimal_places=8, default=0)
 
 
