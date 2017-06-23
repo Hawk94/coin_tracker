@@ -47,7 +47,6 @@ class BaseConfiguration(Configuration):
         'rest_framework_swagger',
         'corsheaders',
         'storages',
-        'channels',
 
         'django_extensions',
 
