@@ -35,6 +35,10 @@ class MSFT(BaseStock):
     market_cap = models.DecimalField(max_digits=18, decimal_places=8, default=0)
 
 
+class SandP(BaseStock):
+    market_cap = models.DecimalField(max_digits=18, decimal_places=8, default=0)
+
+
 class FAMGA(BaseStock):
     market_cap = models.DecimalField(max_digits=18, decimal_places=8, default=0)
 
