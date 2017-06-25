@@ -12,7 +12,7 @@ class Command(BaseCommand):
     help = 'Dumps all coin data to S3'
 
     def handle(self, *args, **options):
-        models = [BTC, ETH, LTC, AAPL, AMZN, FB, GOOG, NFLX, MSFT, SPX, FANG, FAMGA, RATE]
+        models = [BTC, ETH, LTC, AAPL, AMZN, FB, GOOG, NFLX, MSFT, SPX, FANG, FAMGA, Rate]
         
         for model in models:
             json = model_to_json(models)

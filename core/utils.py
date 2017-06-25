@@ -9,9 +9,13 @@ def model_to_json(models):
     for model in models:
         qs = model.objects.all()
         to_json = {}
-
-        for instance in qs:
-            to_json.update({instance.date.strftime('%Y-%m-%d'): float(instance.price)})
+        if model.__name__ == 'Rate':
+            for instance in qs:
+                to_json.update({instance.date.strftime('%Y-%m-%d'): {'usd_rate': 1, 'gbp_rate': float(instance.gbp_rate), 'eur_rate': float(instance.eur_rate)}})
+            
+        else:
+            for instance in qs:
+                to_json.update({instance.date.strftime('%Y-%m-%d'): float(instance.price)})
 
         final_json.update({model.__name__: to_json})
 
