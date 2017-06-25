@@ -1,6 +1,7 @@
 from django.core.management.base import BaseCommand, CommandError
 from main.coins.models import BTC, ETH, LTC
-from main.stocks.models import AAPL, AMZN, FB, GOOG, NFLX, MSFT, FANG, FAMGA
+from main.rates.models import Rate
+from main.stocks.models import AAPL, AMZN, FB, GOOG, NFLX, MSFT, SPX, FANG, FAMGA
 from core.utils import save_to_s3, model_to_json
 
 import requests
@@ -11,7 +12,7 @@ class Command(BaseCommand):
     help = 'Dumps all coin data to S3'
 
     def handle(self, *args, **options):
-        models = [BTC, ETH, LTC, AAPL, AMZN, FB, GOOG, NFLX, MSFT, FANG, FAMGA]
+        models = [BTC, ETH, LTC, AAPL, AMZN, FB, GOOG, NFLX, MSFT, SPX, FANG, FAMGA, RATE]
         
         for model in models:
             json = model_to_json(models)
