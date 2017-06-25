@@ -53,6 +53,7 @@ class BaseConfiguration(Configuration):
         # LOCAL APPS
         'main.bitfinex',
         'main.coins',
+        'main.rates',
         'main.stocks',
         'core',
     ]
@@ -159,3 +160,6 @@ class BaseConfiguration(Configuration):
     # Extra places for collectstatic to find static files.
     STATICFILES_DIRS = [
     ]
+    
+    OPEN_EXCHANGE_APP_ID = values.SecretValue(environ_prefix=None)
+    ALPHA_VANTAGE_API_KEY = values.SecretValue(environ_prefix=None)
