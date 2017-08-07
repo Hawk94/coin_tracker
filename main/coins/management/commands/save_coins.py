@@ -13,9 +13,8 @@ class Command(BaseCommand):
 
     def handle(self, *args, **options):
         models = [BTC, ETH, LTC, AAPL, AMZN, FB, GOOG, NFLX, MSFT, SPX, FANG, FAMGA, Rate]
-        
-        for model in models:
-            json = model_to_json(models)
-            save_to_s3(file_name='coinsaver_data.json', body=json)
+
+        json = model_to_json(models)
+        save_to_s3(file_name='coinsaver_data.json', body=json)
 
         self.stdout.write(self.style.SUCCESS('Successfully saved coins to S3'))
