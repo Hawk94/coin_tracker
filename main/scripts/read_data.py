@@ -36,5 +36,5 @@ def make_objects(infile, coin):
             old_coin.delete()
         except:
             pass
-        return coin.objects.create(date=created, price=price, high=high, low=low, close=close, volume=volume, market_cap=market_cap)
+        coin.objects.create(date=created, price=price, high=high, low=low, close=close, volume=volume, market_cap=market_cap)
         

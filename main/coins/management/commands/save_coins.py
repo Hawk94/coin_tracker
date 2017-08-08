@@ -12,7 +12,7 @@ class Command(BaseCommand):
     help = 'Dumps all coin data to S3'
 
     def handle(self, *args, **options):
-        models = [BTC, ETH, LTC, AAPL, AMZN, FB, GOOG, NFLX, MSFT, SPX, FANG, FAMGA, Rate]
+        models = [BTC, ETH, LTC, FAMGA, Rate]
 
         json = model_to_json(models)
         save_to_s3(file_name='dustapp_data.json', body=json)
