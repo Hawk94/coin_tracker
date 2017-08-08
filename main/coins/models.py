@@ -6,6 +6,10 @@ class BaseCoin(models.Model):
     date = models.DateField(default=timezone.now)
     exchange = models.CharField(max_length=100, blank=True, default='')
     price = models.DecimalField(max_digits=12, decimal_places=4, default=0)
+    high = models.DecimalField(max_digits=12, decimal_places=4, default=0)
+    low = models.DecimalField(max_digits=12, decimal_places=4, default=0)
+    close = models.DecimalField(max_digits=12, decimal_places=4, default=0)
+    volume = models.DecimalField(max_digits=12, decimal_places=4, default=0)
 
     class Meta:
         abstract = True
