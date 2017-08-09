@@ -43,7 +43,7 @@ def make_rates(infile):
     in_reader = csv.reader(in_file)
     rate = None
     for row in in_reader:
-        created = datetime.datetime.strptime(row[1], "%b %d, %Y").date()
+        created = datetime.datetime.strptime(row[1], "%Y/%M/%d").date()
         if rate:
             while rate.date != created + datetime.timedelta(days=1):
                 rate = rate.objects.create(date=created + datetime.timedelta(days=1), eur_rate=rate.eur_rate, gbp_rate=rate.gbp_rate)
