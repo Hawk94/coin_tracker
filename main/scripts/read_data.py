@@ -50,3 +50,15 @@ def make_rates(infile):
         eur_rate = Decimal(row[3])
         gbp_rate = Decimal(row[4])
         rate = Rate.objects.create(date=created, eur_rate=eur_rate, gbp_rate=gbp_rate)
+
+def make_stocks(infile, object):
+        in_file = open(infile, 'r')
+        in_reader = csv.reader(in_file)
+        stock = None
+        for row in in_reader:
+            created = datetime.datetime.strptime(row[0], "%Y-%M-%d").date()
+            if stock:
+                while stock.date != created + datetime.timedelta(days=1):
+                    stock = object.objects.create(date=created + datetime.timedelta(days=1), price=stock.price)
+            price = Decimal(row[1])
+            stock = object.objects.create(date=created, price=price)
