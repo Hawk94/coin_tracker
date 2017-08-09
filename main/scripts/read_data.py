@@ -46,7 +46,7 @@ def make_rates(infile):
         created = datetime.datetime.strptime(row[1], "%Y/%M/%d").date()
         if rate:
             while rate.date != created + datetime.timedelta(days=1):
-                rate = rate.objects.create(date=created + datetime.timedelta(days=1), eur_rate=rate.eur_rate, gbp_rate=rate.gbp_rate)
+                rate = Rate.objects.create(date=created + datetime.timedelta(days=1), eur_rate=rate.eur_rate, gbp_rate=rate.gbp_rate)
         eur_rate = Decimal(row[3])
         gbp_rate = Decimal(row[4])
         rate = Rate.objects.create(date=created, eur_rate=eur_rate, gbp_rate=gbp_rate)
