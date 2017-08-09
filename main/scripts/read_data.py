@@ -37,4 +37,16 @@ def make_objects(infile, coin):
         except:
             pass
         coin.objects.create(date=created, price=price, high=high, low=low, close=close, volume=volume, market_cap=market_cap)
-        
+
+def make_rates(infile):
+    in_file = open(infile, 'r')
+    in_reader = csv.reader(in_file)
+    rate = None
+    for row in in_reader:
+        created = datetime.datetime.strptime(row[1], "%b %d, %Y").date()
+        if rate:
+            while rate.date != created + datetime.timedelta(days=1):
+                rate = rate.objects.create(date=created + datetime.timedelta(days=1), eur_rate=rate.eur_rate, gbp_rate=rate.gbp_rate)
+        eur_rate = Decimal(row[3])
+        gbp_rate = Decimal(row[4])
+        rate = Rate.objects.create(date=created, eur_rate=eur_rate, gbp_rate=gbp_rate)
