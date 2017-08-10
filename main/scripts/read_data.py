@@ -97,17 +97,22 @@ def make_FAMGA():
         FAMGA.objects.create(date=date, price=decimal.Decimal(sum(prices)))
 
 def clean_data(object):
-    start = datetime.datetime.strptime('2013-1-1', "%Y-%M-%d").date()
+    start = datetime.datetime.strptime('2015-1-1', "%Y-%M-%d").date()
     end = datetime.datetime.strptime('2017-8-9', "%Y-%M-%d").date()
     delta = end - start
     clean_first(object)
     for i in range(delta.days + 1):
         date = start + datetime.timedelta(days=i)
+        print(date)
         try:
             all_objects = object.objects.filter(date=date)
-            len_o = len(all_objects)
-            for i in range(len_o-1):
-                all_objects[i].delete()
+            if all_objects.exists():
+                len_o = len(all_objects)
+                for i in range(len_o-1):
+                    all_objects[i].delete()
+            else:
+                price = object.objects.filter(date=date-datetime.timedelta(days=1)).first().price
+                object.objects.create(date=date, price=price)
         except:
             price = object.objects.filter(date=date-datetime.timedelta(days=1)).first().price
             object.objects.create(date=date, price=price)
